@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity // classes that represent tables in our DB
 @Data
 @NoArgsConstructor
-public class Day {
+public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,17 +28,17 @@ public class Day {
 	@NotNull
 	public String name;
 
-	@OneToMany(mappedBy = "day", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Task> tasks;
 
-	public Day(Long id, String name) {
+	public Subject(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public Day(String name) {
+	public Subject(String name) {
 		super();
 		this.name = name;
 	}

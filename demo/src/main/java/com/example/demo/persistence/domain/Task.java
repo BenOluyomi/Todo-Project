@@ -31,7 +31,7 @@ public class Task{
 
 
 	@ManyToOne
-	private Day day;
+	private Subject subject;
 
 	public Task(Long id, String name) {
 		super();

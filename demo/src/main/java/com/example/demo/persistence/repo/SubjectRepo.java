@@ -3,10 +3,10 @@ package com.example.demo.persistence.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.persistence.domain.Day;
+import com.example.demo.persistence.domain.Subject;
 
 @Repository
-public interface DayRepo extends JpaRepository<Day, Long> {
+public interface SubjectRepo extends JpaRepository<Subject, Long> {
 
 	// it allows us to implement
 	// create

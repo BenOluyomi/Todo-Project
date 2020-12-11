@@ -7,21 +7,21 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.DayDto;
+import com.example.demo.dto.SubjectDto;
 import com.example.demo.exceptions.TaskNotFoundException;
-import com.example.demo.persistence.domain.Day;
-import com.example.demo.persistence.repo.DayRepo;
+import com.example.demo.persistence.domain.Subject;
+import com.example.demo.persistence.repo.SubjectRepo;
 import com.example.demo.util.SpringBeanUtil;
 
 @Service
-public class DayService {
+public class SubjectService {
 
 	// this is where our business logic will happen
 
 //	this is also where CRUD logic will take place.
 
 	// implements are crud functionality
-	private DayRepo repo;
+	private SubjectRepo repo;
 
 	// makes object mapping easy by automatically determining how one object model
 	// maps to another.
@@ -29,24 +29,24 @@ public class DayService {
 
 	// we create our mapToDto
 
-	private DayDto mapToDTO(Day day) {
-		return this.mapper.map(day, DayDto.class);
+	private SubjectDto mapToDTO(Subject subject) {
+		return this.mapper.map(subject, SubjectDto.class);
 	}
 
 	@Autowired
-	public DayService(DayRepo repo, ModelMapper mapper) {
+	public SubjectService(SubjectRepo repo, ModelMapper mapper) {
 		super();
 		this.repo = repo;
 		this.mapper = mapper;
 	}
 
 	// Create
-	public DayDto create(Day day) {
-		return this.mapToDTO(this.repo.save(day));
+	public SubjectDto create(Subject subject) {
+		return this.mapToDTO(this.repo.save(subject));
 	}
 
 	// read all method
-	public List<DayDto> readAll() {
+	public List<SubjectDto> readAll() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 		// stream - returns a sequential stream considering collection as its source
 		// map - used to map each element to its corresponding result
@@ -56,18 +56,18 @@ public class DayService {
 	}
 
 	// read one method
-	public DayDto readOne(Long id) {
+	public SubjectDto readOne(Long id) {
 		return this.mapToDTO(this.repo.findById(id).orElseThrow(TaskNotFoundException::new));
 	}
 
 	// update
-	public DayDto update(DayDto dayDto, Long id) {
+	public SubjectDto update(SubjectDto subjectDto, Long id) {
 		// check if record exists
-		Day toUpdate = this.repo.findById(id).orElseThrow(TaskNotFoundException::new);
+		Subject toUpdate = this.repo.findById(id).orElseThrow(TaskNotFoundException::new);
 		// set the record to update
-		toUpdate.setName(dayDto.getName());
+		toUpdate.setName(subjectDto.getName());
 		// check update for any nulls
-		SpringBeanUtil.mergeNotNull(dayDto, toUpdate);
+		SpringBeanUtil.mergeNotNull(subjectDto, toUpdate);
 		// retun the method from repo
 		return this.mapToDTO(this.repo.save(toUpdate));
 

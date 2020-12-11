@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
-public class DayDto {
+public class SubjectDto {
 
 	public Long id;
 	public String name;
