@@ -21,7 +21,7 @@ public interface TaskRepo extends JpaRepository<Task, Long> {
 
 	// find all by name
 	// JPQL
-	@Query(value = "SELECT * FROM BOOK WHERE NAME =?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM TASK WHERE NAME =?1", nativeQuery = true)
 	List<Task> findByName(String name);
 
 }

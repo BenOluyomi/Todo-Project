@@ -12,5 +12,5 @@ public class SubjectDto {
 	public Long id;
 	public String name;
 
-	private List<TaskDto> tasks = new ArrayList<>();
+	private List<TaskDto> tasks;
 }

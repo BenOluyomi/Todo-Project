@@ -41,8 +41,8 @@ public class TaskService {
 	}
 
 	// Create
-	public TaskDto create(Task car) {
-		return this.mapToDTO(this.repo.save(car));
+	public TaskDto create(Task task) {
+		return this.mapToDTO(this.repo.save(task));
 	}
 
 	// read all method
