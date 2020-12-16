@@ -68,9 +68,16 @@ public class TaskControllerUnitTest {
 		assertThat(this.controller.read()).isEqualTo(new ResponseEntity<>(dtos,HttpStatus.OK));
 		verify(this.service, atLeastOnce()).readAll();
 	}
-	//@Test
-	//void UpdateTest() throws Exception {
-	//	when(this.service.update(this.maptoDto(Test_book_1), Test_book_1.getId())).thenReturn(this.maptoDto(Test_book_1));
-	//	assertThat(new ResponseEntity<BookDto>(this.maptoDto(Test_book_1),HttpStatus.ACCEPTED)).isEqualTo(this.controller.update(Test_book_1.getId()),this.maptoDto(Test_book_1)));
-	//}
+	@Test
+	void UpdateTest() throws Exception {
+		when(this.service.update(this.maptoDto(Test_task_1), Test_task_1.getId())).thenReturn(this.maptoDto(Test_task_1));
+		assertThat(new ResponseEntity<TaskDto>(this.maptoDto(Test_task_1),HttpStatus.ACCEPTED)).isEqualTo(this.controller.update(Test_task_1.getId(),this.maptoDto(Test_task_1)));
+	verify(this.service, atLeastOnce()).update(this.maptoDto(Test_task_1), Test_task_1.getId());
+	}
+
+	@Test
+	void deketeTest() throws Exception {
+		this.controller.delete(Test_task_1.getId());
+		verify(this.service, atLeastOnce()).delete(Test_task_1.getId());
+	}
 }
