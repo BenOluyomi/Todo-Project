@@ -36,22 +36,22 @@ public class TaskControllerUnitTest {
 	
 	private TaskDto maptoDto(Task task) {
 		return this.mapper.map(task,TaskDto.class);
-		
+		 
 	}
 	private final Task Test_task_1 = new Task(1L,"Autobiography");
 	private final Task Test_task_2 = new Task(2L,"Cooking");
 	private final Task Test_task_3 = new Task(3L,"Cars");
 	private final Task Test_task_4 = new Task(4L,"Shoes");
 	
-	private final List<Task> LISTOFBOOKS = List.of(Test_task_1,Test_task_2,Test_task_3,Test_task_4);
+	private final List<Task> LISTOFTASKS = List.of(Test_task_1,Test_task_2,Test_task_3,Test_task_4);
 
-	@Test
+	@Test 
 	void createTest() throws Exception {
 		when(this.service.create(Test_task_1)).thenReturn(this.maptoDto(Test_task_1));
 		assertThat(new ResponseEntity<TaskDto>(this.maptoDto(Test_task_1),HttpStatus.CREATED)).isEqualTo(this.controller.create(Test_task_1));
 		
 		verify(this.service, atLeastOnce()).create(Test_task_1);
-	}
+	} 
 	
 	@Test
 	void readOneTest() throws Exception {
@@ -62,8 +62,8 @@ public class TaskControllerUnitTest {
 }
 	@Test
 	void readAllTest() throws Exception {
-		List<TaskDto> dtos = LISTOFBOOKS.stream().map(this::maptoDto).collect(Collectors.toList());
-		when(this.service.readAll()).thenReturn(LISTOFBOOKS.stream().map(this::maptoDto).collect(Collectors.toList()));
+		List<TaskDto> dtos = LISTOFTASKS.stream().map(this::maptoDto).collect(Collectors.toList());
+		when(this.service.readAll()).thenReturn(LISTOFTASKS.stream().map(this::maptoDto).collect(Collectors.toList()));
 		
 		assertThat(this.controller.read()).isEqualTo(new ResponseEntity<>(dtos,HttpStatus.OK));
 		verify(this.service, atLeastOnce()).readAll();

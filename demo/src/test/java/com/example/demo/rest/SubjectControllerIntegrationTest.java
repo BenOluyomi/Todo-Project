@@ -19,14 +19,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
-import com.example.demo.dto.TaskDto;
-import com.example.demo.persistence.domain.Task;
+import com.example.demo.dto.SubjectDto;
+import com.example.demo.persistence.domain.Subject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:task-schema.sql", "classpath:task-data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "prod")
-public class TaskControllerIntegrationTest {
+public class SubjectControllerIntegrationTest {
 	
 	@Autowired
 	private MockMvc mvc;
@@ -37,21 +37,21 @@ public class TaskControllerIntegrationTest {
 	@Autowired
 	private ModelMapper mapper;
 	
-	private TaskDto mapToDTO(Task task) {
-		return this.mapper.map(task, TaskDto.class);
+	private SubjectDto mapToDTO(Subject subject) {
+		return this.mapper.map(subject, SubjectDto.class);
 	}
-	private final Task Test_task_1 = new Task(1L,"Finish Essay");
-	private final Task Test_task_2 = new Task(2L,"Answer Questions");
-	private final Task Test_task_3 = new Task(3L,"Do Project");
-	private final Task Test_task_4 = new Task(4L,"Draw Map");
+	private final Subject Test_sub_1 = new Subject(1L,"English");
+	private final Subject Test_sub_2 = new Subject(2L,"Maths");
+	private final Subject Test_sub_3 = new Subject(3L,"Art");
+	private final Subject Test_sub_4 = new Subject(4L,"Geography");
 	
-	private final List<Task> LISTOFTASKS = List.of(Test_task_1,Test_task_2,Test_task_3,Test_task_4);
+	private final List<Subject> LISTOFSUBJECTS = List.of(Test_sub_1,Test_sub_2,Test_sub_3,Test_sub_4);
 	
-	private final String URI = "/task";
+	private final String URI = "/subject";
 	
 	@Test
 	void createTest() throws Exception {
-		TaskDto testDTO = mapToDTO(new Task("make shoes"));
+		SubjectDto testDTO = mapToDTO(new Subject("Woodshop"));
 		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
 		
 		RequestBuilder request = post(URI+"/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
@@ -60,27 +60,7 @@ public class TaskControllerIntegrationTest {
 		
 		ResultMatcher checkStatus = status().isCreated();
 		
-		TaskDto testSavedDTO = mapToDTO(new Task("make shoes"));
-		testSavedDTO.setId(5L);
-		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
-		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
-		
-		
-		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
-		
-	}
-	@Test
-	void readTest() throws Exception {
-		TaskDto testDTO = mapToDTO(new Task("make shoes"));
-		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
-		
-		RequestBuilder request = post(URI+"/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
-		
-		System.out.println(testDTOAsJSON);
-		
-		ResultMatcher checkStatus = status().isCreated();
-		
-		TaskDto testSavedDTO = mapToDTO(new Task("make shoes"));
+		SubjectDto testSavedDTO = mapToDTO(new Subject("Woodshop"));
 		testSavedDTO.setId(5L);
 		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
 		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);

@@ -43,7 +43,7 @@ public class SubjectControllerUnitTest {
 	private final Subject Test_sub_3 = new Subject(3L,"Cars");
 	private final Subject Test_sub_4 = new Subject(4L,"Shoes");
 	
-	private final List<Subject> LISTOFBOOKS = List.of(Test_sub_1,Test_sub_2,Test_sub_3,Test_sub_4);
+	private final List<Subject> LISTOFSUBJECTS= List.of(Test_sub_1,Test_sub_2,Test_sub_3,Test_sub_4);
 
 	@Test
 	void createTest() throws Exception {
@@ -62,8 +62,8 @@ public class SubjectControllerUnitTest {
 }
 	@Test
 	void readAllTest() throws Exception {
-		List<SubjectDto> dtos = LISTOFBOOKS.stream().map(this::maptoDto).collect(Collectors.toList());
-		when(this.service.readAll()).thenReturn(LISTOFBOOKS.stream().map(this::maptoDto).collect(Collectors.toList()));
+		List<SubjectDto> dtos = LISTOFSUBJECTS.stream().map(this::maptoDto).collect(Collectors.toList());
+		when(this.service.readAll()).thenReturn(LISTOFSUBJECTS.stream().map(this::maptoDto).collect(Collectors.toList()));
 		
 		assertThat(this.controller.read()).isEqualTo(new ResponseEntity<>(dtos,HttpStatus.OK));
 		verify(this.service, atLeastOnce()).readAll();
@@ -76,7 +76,7 @@ public class SubjectControllerUnitTest {
 	}
 
 	@Test
-	void deketeTest() throws Exception {
+	void deleteTest() throws Exception {
 		this.controller.delete(Test_sub_1.getId());
 		verify(this.service, atLeastOnce()).delete(Test_sub_1.getId());
 	}
