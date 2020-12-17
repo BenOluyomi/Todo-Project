@@ -1,6 +1,7 @@
 package com.example.demo.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -55,6 +56,27 @@ public class SubjectControllerIntegrationTest {
 		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
 		
 		RequestBuilder request = post(URI+"/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		
+		System.out.println(testDTOAsJSON);
+		
+		ResultMatcher checkStatus = status().isCreated();
+		
+		SubjectDto testSavedDTO = mapToDTO(new Subject("Woodshop"));
+		testSavedDTO.setId(5L);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		 
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+		
+	}
+	
+	@Test
+	void updateTest() throws Exception {
+		SubjectDto testDTO = mapToDTO(new Subject("Woodshop"));
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+		
+		RequestBuilder request = put(URI+"/update").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
 		
 		System.out.println(testDTOAsJSON);
 		

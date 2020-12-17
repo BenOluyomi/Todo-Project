@@ -7,7 +7,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>Task Library</title>
+
+    <title>Home Page</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,19 +19,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="./home.html">Home/About</a>
+              <a class="nav-link active" href="./home.html">Home/About<span class="sr-only">(current)</span></a>
+
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./viewallsubs.html">View All Subjects</a>
           </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">View All Tasks<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./index.html">View All Tasks</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./viewbyid.html">View By Id</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./create.html">Create Task</a>
+              <a class="nav-link" href="./create.html">Create a Task</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./createSub.html">Create a Subject</a>
@@ -41,9 +43,34 @@
           </ul>
         </div>
       </nav>
+      <div>
+      <h1> Welcome to Tasky Inc.</h1>
+      <a> For your basic task management needs...</a>
+      </div>
+      <br>
+      <h4> Feature Breakdown:</h4>
+      <br>
+      <h5> CREATE</h5>
+      <p> You can create subjects and tasks for each of those subjects</p>
 
-      <table id="tbl" class="table table-dark"></table>
+      <h5> READ</h5>
+      <p> You can check in on your created subjects and tasks</p>
 
-      <script src="../main.js"></script>
+      <h5> UPDATE</h5>
+      <p> You can update subjects and tasks</p>
+
+      <h5> DELETE</h5>
+      <p> You can delete tasks for each of those subjects when you've finished with them</p>
+      <br>
+      <h6> WARNING! ALL INFORMATION INPUT WILL RESET AFTER PROGRAM HAS STOPPED!</h6>
+      <h6> WARNING! DELETING A SUBJECT WILL DELETE THE TASKS WITHIN THAT SUBJECT!</h6>
+      <style>
+        h1 {text-align: center;}
+        h4 {text-align: center;}
+        h5 {text-align: center;}
+        h6 {text-align: center; color: red;}
+        p {text-align: center;}
+        div {text-align: center;}
+        </style>
 </body>
 </html>

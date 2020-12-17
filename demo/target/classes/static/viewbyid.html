@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>Task Library</title>
+    <title>Document</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,13 +24,13 @@
               <a class="nav-link" href="./viewallsubs.html">View All Subjects</a>
           </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">View All Tasks<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="./index.html">View All Tasks</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewbyid.html">View By Id</a>
+              <a class="nav-link active" href="">View By Id<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./create.html">Create Task</a>
+              <a class="nav-link" href="./create.html">Create a Task</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./createSub.html">Create a Subject</a>
@@ -42,8 +42,29 @@
         </div>
       </nav>
 
+      <section id="cover" class="min-vh-100">
+        <div id="cover-caption">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                        <h1 class="display-4 py-2 text-truncate">Center my form.</h1>
+                        <div class="px-2">
+                            <form method="GET" class="justify-content-center" onsubmit="">
+                                <div class="form-group">
+                                    <label class="sr-only">ID</label>
+                                    <input type="text" class="form-control" name="id" placeholder="Enter the task ID">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg">Find Task</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
       <table id="tbl" class="table table-dark"></table>
 
-      <script src="../main.js"></script>
+      <script src="../viewbyid.js"></script>
 </body>
 </html>
