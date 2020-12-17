@@ -1,0 +1,14 @@
+com\example\demo\DemoApplication.class
+com\example\demo\config\AppConfig.class
+com\example\demo\rest\SubjectController.class
+com\example\demo\dto\SubjectDto.class
+com\example\demo\service\TaskService.class
+com\example\demo\dto\TaskDto.class
+com\example\demo\exceptions\TaskNotFoundException.class
+com\example\demo\persistence\repo\SubjectRepo.class
+com\example\demo\persistence\domain\Task.class
+com\example\demo\service\SubjectService.class
+com\example\demo\persistence\repo\TaskRepo.class
+com\example\demo\util\SpringBeanUtil.class
+com\example\demo\rest\TaskController.class
+com\example\demo\persistence\domain\Subject.class

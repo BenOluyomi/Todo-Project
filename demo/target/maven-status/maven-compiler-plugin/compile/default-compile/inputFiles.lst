@@ -1,0 +1,14 @@
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\persistence\domain\Subject.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\dto\TaskDto.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\persistence\repo\SubjectRepo.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\util\SpringBeanUtil.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\dto\SubjectDto.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\service\TaskService.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\persistence\repo\TaskRepo.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\persistence\domain\Task.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\exceptions\TaskNotFoundException.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\config\AppConfig.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\rest\TaskController.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\DemoApplication.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\rest\SubjectController.java
+C:\Users\Ben\Desktop\final TD\Todo-Project\demo\src\main\java\com\example\demo\service\SubjectService.java
