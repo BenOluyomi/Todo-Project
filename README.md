@@ -33,7 +33,7 @@ In order to rebuild the jar files to run, the following cammands need to be inpu
 mvn clean 
 ```
 ```
-mvn install 
+mvn package
 ```
 this should provide you with the jar files in your directory.
 
