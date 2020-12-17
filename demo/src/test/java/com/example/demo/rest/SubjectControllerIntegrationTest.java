@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -21,7 +23,9 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.example.demo.dto.SubjectDto;
+
 import com.example.demo.persistence.domain.Subject;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -70,17 +74,57 @@ public class SubjectControllerIntegrationTest {
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 		
 	}
-	
+	@Test
+	void readTest() throws Exception {
+		SubjectDto testDTO = mapToDTO(new Subject("English"));
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+		
+		RequestBuilder request = get(URI+"/read/1").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		
+		System.out.println(testDTOAsJSON);
+		
+		ResultMatcher checkStatus = status().isCreated();
+		
+		SubjectDto testSavedDTO = mapToDTO(new Subject("English"));
+		testSavedDTO.setId(1L);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+		
+	}
 	@Test
 	void updateTest() throws Exception {
 		SubjectDto testDTO = mapToDTO(new Subject("Woodshop"));
 		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
 		
-		RequestBuilder request = put(URI+"/update").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		RequestBuilder request = put(URI+"/update/1").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
 		
 		System.out.println(testDTOAsJSON);
 		
-		ResultMatcher checkStatus = status().isCreated();
+		ResultMatcher checkStatus = status().isAccepted();
+		
+		SubjectDto testSavedDTO = mapToDTO(new Subject("Woodshop"));
+		testSavedDTO.setId(1L);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+		
+	}
+	
+	@Test
+	void deleteTest() throws Exception {
+		SubjectDto testDTO = mapToDTO(new Subject("Woodshop"));
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+		
+		RequestBuilder request = delete(URI+"/delete").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		
+		System.out.println(testDTOAsJSON);
+		
+		ResultMatcher checkStatus = status().isAccepted();
 		
 		SubjectDto testSavedDTO = mapToDTO(new Subject("Woodshop"));
 		testSavedDTO.setId(5L);
@@ -91,6 +135,7 @@ public class SubjectControllerIntegrationTest {
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 		
 	}
+	
 	
 	
 }

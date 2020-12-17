@@ -76,8 +76,16 @@ public class TaskControllerUnitTest {
 	}
 
 	@Test
-	void deketeTest() throws Exception {
+	void deleteTest() throws Exception {
 		this.controller.delete(Test_task_1.getId());
 		verify(this.service, atLeastOnce()).delete(Test_task_1.getId());
 	}
+	@Test
+	void findByName() throws Exception{
+		List<TaskDto> dtos = LISTOFTASKS.stream().map(this::maptoDto).collect(Collectors.toList());
+		when(this.service.findByName(Test_task_1.getName())).thenReturn(dtos);
+		assertThat(this.controller.findByName(Test_task_1.getName())).isEqualTo(new ResponseEntity<List<TaskDto>>(dtos,HttpStatus.OK));
+		verify(this.service, atLeastOnce()).findByName(Test_task_1.getName());
+	}
+	
 }

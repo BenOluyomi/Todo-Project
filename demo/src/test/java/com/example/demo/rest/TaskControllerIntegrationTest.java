@@ -1,6 +1,8 @@
 package com.example.demo.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -19,7 +21,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+
 import com.example.demo.dto.TaskDto;
+
 import com.example.demo.persistence.domain.Task;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
@@ -68,6 +72,7 @@ public class TaskControllerIntegrationTest {
 		
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 		
+		
 	}
 	@Test
 	void readTest() throws Exception {
@@ -81,6 +86,47 @@ public class TaskControllerIntegrationTest {
 		ResultMatcher checkStatus = status().isCreated();
 		
 		TaskDto testSavedDTO = mapToDTO(new Task("make shoes"));
+		testSavedDTO.setId(5L);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+		 
+	}
+	@Test
+	void updateTest() throws Exception {
+		TaskDto testDTO = mapToDTO(new Task("Woodshop"));
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+		
+		RequestBuilder request = put(URI+"/update/1").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		
+		System.out.println(testDTOAsJSON);
+		
+		ResultMatcher checkStatus = status().isAccepted();
+		
+		TaskDto testSavedDTO = mapToDTO(new Task("Woodshop"));
+		testSavedDTO.setId(1L);
+		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+		
+		
+		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+		
+	}
+	
+	@Test
+	void deleteTest() throws Exception {
+		TaskDto testDTO = mapToDTO(new Task("Woodshop"));
+		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+		
+		RequestBuilder request = delete(URI+"/delete").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		
+		System.out.println(testDTOAsJSON);
+		
+		ResultMatcher checkStatus = status().isAccepted();
+		
+		TaskDto testSavedDTO = mapToDTO(new Task("Woodshop"));
 		testSavedDTO.setId(5L);
 		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
 		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
