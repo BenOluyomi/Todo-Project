@@ -120,7 +120,7 @@ public class TaskControllerIntegrationTest {
 		TaskDto testDTO = mapToDTO(new Task("Woodshop"));
 		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
 		
-		RequestBuilder request = delete(URI+"/delete").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+		RequestBuilder request = delete(URI+"/delete/1").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
 		
 		System.out.println(testDTOAsJSON);
 		
