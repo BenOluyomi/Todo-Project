@@ -16,9 +16,15 @@ The Home/About tab on the webpage has instructions on how to use the program onc
 To run the program, you must use a version of java 14 or higher to run the .jar file in the repository. To execute this .jar the following command is required.
 
 ```
-'java -jar nameoffile.jar' and the program should begin if the gcp instance is up.
+'java -jar nameoffile.jar' and the program should begin.
 ```
 
+To access the webpage, open up a web browser and enter thew following in the web navigation bar...
+
+```
+https://localhost:8080
+```
+This should take you to the view all tasks page initially, then navigate to the Home/About page for instructions for information on what this program offers.
 
 ###Rebuild the jar
 Maven installation
